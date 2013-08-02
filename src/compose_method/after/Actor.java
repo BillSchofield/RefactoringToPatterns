@@ -1,16 +1,18 @@
-import static ComposeMethod_After.Status.Alive;
-import static ComposeMethod_After.Status.Dead;
+package compose_method.after;
+
+import static compose_method.after.Actor.Status.Alive;
+import static compose_method.after.Actor.Status.Dead;
 import static java.lang.Float.MAX_VALUE;
 
-public class ComposeMethod_After {
+public class Actor {
     enum Status {Alive, Dead}
+    private Status currentStatus;
     private final Float maximumHitPoints;
     private Float currentHitPoints;
     private Float lastChange;
-    private Status currentStatus;
 
 
-    public ComposeMethod_After(Float maximumHitPoints) {
+    public Actor(Float maximumHitPoints) {
         this.maximumHitPoints = maximumHitPoints;
         bringToLife();
     }

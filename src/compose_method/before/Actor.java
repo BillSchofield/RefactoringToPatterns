@@ -1,8 +1,10 @@
-import static ComposeMethod_Before.Status.Alive;
-import static ComposeMethod_Before.Status.Dead;
+package compose_method.before;
+
+import static compose_method.before.Actor.Status.Alive;
+import static compose_method.before.Actor.Status.Dead;
 import static java.lang.Float.MAX_VALUE;
 
-public class ComposeMethod_Before {
+public class Actor {
     enum Status {Alive, Dead}
     private final Float maximumHitPoints;
     private Float currentHitPoints;
@@ -10,35 +12,35 @@ public class ComposeMethod_Before {
     private Status currentStatus;
 
 
-    public ComposeMethod_Before(Float maximumHitPoints) {
+    public Actor(Float maximumHitPoints) {
         this.maximumHitPoints = maximumHitPoints;
         this.currentHitPoints = this.maximumHitPoints;
         this.currentStatus = Alive;
     }
 
-    public void changeMonsterHitPoints(Float hitPointChange){
-        if (hitPointChange < 0.0f){
-            currentHitPoints += hitPointChange;
+    public void changeHitPoints(Float change){
+        if (change < 0.0f){
+            currentHitPoints += change;
             if (currentHitPoints < 0.0f){
                 currentHitPoints = 0.0f;
                 currentStatus = Dead;
             }
-        } else if (hitPointChange > 0.0f){
-            if (hitPointChange == MAX_VALUE){
+        } else if (change > 0.0f){
+            if (change == MAX_VALUE){
                 if (currentStatus == Dead){
                     currentStatus = Alive;
                     currentHitPoints = maximumHitPoints;
                 }
             }
-            currentHitPoints += hitPointChange;
+            currentHitPoints += change;
             if (currentHitPoints > maximumHitPoints){
                 currentHitPoints = maximumHitPoints;
             }
         } else {
             if (lastChange != 0.0f){
-                changeMonsterHitPoints(lastChange);
+                changeHitPoints(lastChange);
             }
         }
-        lastChange = hitPointChange;
+        lastChange = change;
     }
 }
