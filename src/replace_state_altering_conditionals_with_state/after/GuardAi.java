@@ -1,12 +1,11 @@
 package replace_state_altering_conditionals_with_state.after;
 
-import replace_state_altering_conditionals_with_state.Actor;
 import replace_state_altering_conditionals_with_state.after.state.State;
 
 public class GuardAi {
     State currentState;
 
-    public GuardAi(State currentState, Actor myActor) {
+    public GuardAi(State currentState) {
         this.currentState = currentState;
     }
 

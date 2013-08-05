@@ -56,6 +56,7 @@ public class GuardAi {
                 // Do nothing
                 break;
             case Unconscious:
+                // Do nothing
                 break;
             case Asleep:
                 myActor.snore();

@@ -3,7 +3,7 @@ package replace_conditional_logic_with_strategy.after.attacks;
 import replace_conditional_logic_with_strategy.after.Actor;
 
 public class BowAttack implements Attack{
-    Actor me;
+    private Actor me;
 
     public BowAttack(Actor me){
         this.me = me;
