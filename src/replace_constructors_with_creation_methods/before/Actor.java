@@ -15,30 +15,30 @@ public class Actor {
     private final List<Weapon> weapons;
     private Actor rider;
 
-    public Actor(boolean canFly, int hitPoints, int armor, Weapon... weapons) {
-        this.canFly = canFly;
-        this.hitPoints = hitPoints;
-        this.armor = armor;
-        this.viewRange = defaultViewRange;
-        this.weapons = asList(weapons);
-        this.rider = null;
-    }
+public Actor(boolean canFly, int hitPoints, int armor, Weapon... weapons) {
+    this.canFly = canFly;
+    this.hitPoints = hitPoints;
+    this.armor = armor;
+    this.viewRange = defaultViewRange;
+    this.weapons = asList(weapons);
+    this.rider = null;
+}
 
-    public Actor(boolean canFly, int hitPoints, int armor, Actor rider) {
-        this.canFly = canFly;
-        this.hitPoints = hitPoints;
-        this.armor = armor;
-        this.viewRange = defaultViewRange;
-        this.weapons = asList();
-        this.rider = rider;
-    }
+public Actor(boolean canFly, int hitPoints, int armor, Actor rider) {
+    this.canFly = canFly;
+    this.hitPoints = hitPoints;
+    this.armor = armor;
+    this.viewRange = defaultViewRange;
+    this.weapons = asList();
+    this.rider = rider;
+}
 
-    public Actor(boolean canFly, int hitPoints, int armor, int viewRange) {
-        this.canFly = canFly;
-        this.hitPoints = hitPoints;
-        this.armor = armor;
-        this.viewRange = viewRange;
-        this.weapons = asList();
-        this.rider = null;
-    }
+public Actor(boolean canFly, int hitPoints, int armor, int viewRange) {
+    this.canFly = canFly;
+    this.hitPoints = hitPoints;
+    this.armor = armor;
+    this.viewRange = viewRange;
+    this.weapons = asList();
+    this.rider = null;
+}
 }

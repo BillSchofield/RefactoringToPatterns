@@ -13,8 +13,4 @@ public class Character implements Actor {
     public void moveTo(Position newPosition){
         position = newPosition;
     }
-
-    public void attack(Actor target){
-
-    }
 }
