@@ -2,10 +2,10 @@ package move_embellishment_to_decorator.after;
 
 import move_embellishment_to_decorator.Position;
 
-public class RadiusDamageDecorator implements Actor {
+public class RadiusDecorator implements Actor {
     private Actor actor;
 
-    public RadiusDamageDecorator(Actor actor) {
+    public RadiusDecorator(Actor actor) {
         this.actor = actor;
     }
 

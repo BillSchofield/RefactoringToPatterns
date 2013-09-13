@@ -10,7 +10,7 @@ public class ActorFactory {
 
     public static Actor createActorWithFireAura(Position position){
         Actor actor = createActor(position);
-        Actor decoratedActor = new RadiusDamageDecorator(actor);
+        Actor decoratedActor = new RadiusDecorator(actor);
         return decoratedActor;
     }
 
