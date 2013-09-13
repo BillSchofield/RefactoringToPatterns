@@ -30,7 +30,7 @@ public class Actor {
         return new Actor(false, 10, 15, defaultViewRange, new Weapon("Sword"), new Weapon("Sword"));
     }
 
-    public static Actor warg() {
+    public static Actor battleWolf() {
         return new Actor(false, 10, 10, defaultViewRange);
     }
 

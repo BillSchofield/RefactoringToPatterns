@@ -13,7 +13,7 @@ public class GuardAi {
         Fighting
     }
 
-    State currentState;
+    private State currentState;
     private final Actor myActor;
 
     public GuardAi(State currentState, Actor myActor) {
