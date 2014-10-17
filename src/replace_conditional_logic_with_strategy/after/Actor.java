@@ -1,7 +1,5 @@
 package replace_conditional_logic_with_strategy.after;
 
-import replace_conditional_logic_with_strategy.after.attacks.Attack;
-
 public class Actor {
     private Attack attack;
 
@@ -10,7 +8,7 @@ public class Actor {
     }
 
     public void attack(Actor target){
-        attack.attemptToHit(target);
+        attack.hit(target);
     }
 
     public void applyDamage(int damage) {

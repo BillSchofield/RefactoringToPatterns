@@ -1,6 +1,4 @@
-package replace_conditional_logic_with_strategy.after.attacks;
-
-import replace_conditional_logic_with_strategy.after.Actor;
+package replace_conditional_logic_with_strategy.after;
 
 public class SwordAttack implements Attack{
     private Actor me;
@@ -9,7 +7,7 @@ public class SwordAttack implements Attack{
         this.me = me;
     }
 
-    public void attemptToHit(Actor target) {
+    public void hit(Actor target) {
         if (target.rangeTo(me) < 3.0f)
             target.applyDamage(3);
     }

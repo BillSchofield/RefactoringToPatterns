@@ -1,6 +1,4 @@
-package replace_conditional_logic_with_strategy.after.attacks;
-
-import replace_conditional_logic_with_strategy.after.Actor;
+package replace_conditional_logic_with_strategy.after;
 
 public class BowAttack implements Attack{
     private Actor me;
@@ -9,7 +7,7 @@ public class BowAttack implements Attack{
         this.me = me;
     }
 
-    public void attemptToHit(Actor target) {
+    public void hit(Actor target) {
         float range = target.rangeTo(me);
         if (1.0f < range && range < 20.0f){
             target.applyDamage((int) (3 - range/10));

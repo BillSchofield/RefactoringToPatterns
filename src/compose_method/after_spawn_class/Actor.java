@@ -16,6 +16,7 @@ public class Actor {
         bringToLife();
     }
 
+    // This is still ugly! What should we do next?
     public void changeMonsterHitPoints(HitPointChange hitPointChange){
         if (hitPointChange.isDamage()){
             applyDamage(hitPointChange);
