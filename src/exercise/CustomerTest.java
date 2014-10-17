@@ -10,11 +10,12 @@ import static org.mockito.Mockito.mock;
 public class CustomerTest {
 
     @Test
-    public void shouldCharge2DollarsForARegularRental(){
+    public void shouldCharge3DollarsForANewRelease(){
         Customer customer = new Customer("Bill");
-        Rental mock = mock(Rental.class);
-        customer.addRental(mock);
+        Rental rental = mock(Rental.class);
 
-        assertThat(customer.statement(), containsString("Amount owed is 2"));
+        customer.addRental(rental);
+
+        assertThat(customer.statement(), containsString("Amount owed is 3"));
     }
 }
