@@ -1,0 +1,2 @@
+rootProject.name = 'RefactoringToPatterns'
+include 'java7'
