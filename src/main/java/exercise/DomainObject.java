@@ -5,15 +5,17 @@ public class DomainObject {
 
 	public DomainObject (String name)	{
 		this.name = name;
-	};
+	}
 
-	public DomainObject ()	{};
+	public DomainObject ()	{
+
+	}
 
 	public String name ()	{
 		return name;
-	};
+	}
 
 	public String toString() {
 		return name;
-	};
+	}
 }

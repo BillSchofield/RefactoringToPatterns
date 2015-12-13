@@ -3,7 +3,7 @@ package replace_conditional_logic_with_strategy.before;
 import java.util.Random;
 
 public class Actor {
-    private enum AttackType{Sword, Bow, Spell};
+    private enum AttackType{Sword, Bow, Spell}
     private AttackType attackType;
 
     public Actor(AttackType attackType) {
