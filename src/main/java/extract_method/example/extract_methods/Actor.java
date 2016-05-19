@@ -1,7 +1,7 @@
-package compose_method.after;
+package extract_method.example.extract_methods;
 
-import static compose_method.after.Actor.Status.Alive;
-import static compose_method.after.Actor.Status.Dead;
+import static extract_method.example.extract_methods.Actor.Status.Alive;
+import static extract_method.example.extract_methods.Actor.Status.Dead;
 import static java.lang.Float.MAX_VALUE;
 
 public class Actor {
@@ -17,7 +17,7 @@ public class Actor {
         bringToLife();
     }
 
-    public void changeMonsterHitPoints(Float hitPointChange){
+    public void changeHitPoints(Float hitPointChange){
         if (isDamage(hitPointChange)){
             applyDamage(hitPointChange);
         } else if (isHealing(hitPointChange)){
@@ -28,12 +28,16 @@ public class Actor {
         rememberLastChange(hitPointChange);
     }
 
+    public void reportStatus() {
+        System.out.println(currentStatus.toString());
+    }
+
     private void rememberLastChange(Float hitPointChange) {
         lastChange = hitPointChange;
     }
 
     private void reapplyLastChange() {
-        changeMonsterHitPoints(lastChange);
+        changeHitPoints(lastChange);
     }
 
     private void applyHealing(Float hitPointChange) {

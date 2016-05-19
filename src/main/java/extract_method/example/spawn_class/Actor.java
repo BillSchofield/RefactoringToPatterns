@@ -1,7 +1,7 @@
-package compose_method.after_spawn_class;
+package extract_method.example.spawn_class;
 
-import static compose_method.after_spawn_class.Actor.Status.Alive;
-import static compose_method.after_spawn_class.Actor.Status.Dead;
+import static extract_method.example.spawn_class.Actor.Status.Alive;
+import static extract_method.example.spawn_class.Actor.Status.Dead;
 
 public class Actor {
     enum Status {Alive, Dead}
@@ -17,7 +17,7 @@ public class Actor {
     }
 
     // This is still ugly! What should we do next?
-    public void changeMonsterHitPoints(HitPointChange hitPointChange){
+    public void changeHitPoints(HitPointChange hitPointChange){
         if (hitPointChange.isDamage()){
             applyDamage(hitPointChange);
         } else if (hitPointChange.isHealing()){
@@ -28,12 +28,16 @@ public class Actor {
         rememberLastChange(hitPointChange);
     }
 
+    public void reportStatus() {
+        System.out.println(currentStatus.toString());
+    }
+
     private void rememberLastChange(HitPointChange hitPointChange) {
         lastChange = hitPointChange;
     }
 
     private void reapplyLastChange() {
-        changeMonsterHitPoints(lastChange);
+        changeHitPoints(lastChange);
     }
 
     private void applyHealing(HitPointChange hitPointChange) {

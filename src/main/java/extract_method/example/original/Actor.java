@@ -1,7 +1,7 @@
-package compose_method.before;
+package extract_method.example.original;
 
-import static compose_method.before.Actor.Status.Alive;
-import static compose_method.before.Actor.Status.Dead;
+import static extract_method.example.original.Actor.Status.Alive;
+import static extract_method.example.original.Actor.Status.Dead;
 import static java.lang.Float.MAX_VALUE;
 
 public class Actor {
@@ -16,6 +16,9 @@ public class Actor {
         this.maximumHitPoints = maximumHitPoints;
         this.currentHitPoints = this.maximumHitPoints;
         this.currentStatus = Alive;
+    }
+    public void reportStatus() {
+        System.out.println(currentStatus.toString());
     }
 
     public void changeHitPoints(Float change){

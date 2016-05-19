@@ -1,4 +1,4 @@
-package compose_method.after_spawn_class;
+package extract_method.example.spawn_class;
 
 public class HitPointChange {
     private final float change;
