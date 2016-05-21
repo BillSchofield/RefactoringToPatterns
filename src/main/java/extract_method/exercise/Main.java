@@ -7,14 +7,16 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        List<String> transactions = Arrays.asList(
-                "1/1/16,10",
-                "1/2/16,20",
-                "1/3/16,-31",
-                "1/4/16,DEAD",
-                "1/5/16,20");
-        BillCollector collector = new BillCollector();
-        collector.process(transactions);
+        List<String> sessions = Arrays.asList(
+                "Dev,TDD by Example,60",
+                "Dev,Refactoring to Patterns,120",
+                "QA, JBehave for Fun and Profit,90");
+        Conference conference = new Conference(9*60, 18*60);
+        for (String session : sessions) {
+            conference.addSession(session);
+        }
+
+        conference.print();
 
     }
 }
