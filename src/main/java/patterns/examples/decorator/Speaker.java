@@ -1,4 +1,4 @@
-package decorator_example;
+package patterns.examples.decorator;
 
 public interface Speaker {
     String speak();

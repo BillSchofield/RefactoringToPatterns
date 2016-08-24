@@ -16,15 +16,17 @@ public class Conference {
 
     public void addSession(String sessionString) {
         String[] tokens = sessionString.split(",");
-
         String trackName = tokens[0];
         String sessionName = tokens[1];
         int duration = Integer.parseInt(tokens[2]);
 
-        if (!tracks.containsKey(trackName)) {
-            tracks.put(trackName, new Track(new ArrayList<Session>()));
+        Track track = findTrack(trackName);
+        if (sessionDoesNotExist(sessionName, track)) {
+            addSession(sessionName, duration, track);
         }
-        Track track = tracks.get(trackName);
+    }
+
+    private boolean sessionDoesNotExist(String sessionName, Track track) {
         Session foundSession = null;
         for (Session session : track.getSessions()) {
             if (session.getName().equals(sessionName)) {
@@ -32,29 +34,56 @@ public class Conference {
                 break;
             }
         }
+        return foundSession == null;
+    }
 
-        if (foundSession == null) {
-            if (track.getSessions().isEmpty()) {
-                if (endTimeInMinutes - startTimeInMinutes > duration) {
-                    track.getSessions().add(new Session(sessionName, startTimeInMinutes, startTimeInMinutes + duration));
-                }
-            } else {
-                int candidateStartTime = startTimeInMinutes;
-                int candidateEndTime = -1;
-                List<Session> sessions = track.getSessions();
-                for (Session session : sessions) {
-                    candidateEndTime = session.getStartTime();
-                    if (candidateEndTime - candidateStartTime > duration) {
-                        candidateEndTime = candidateStartTime + duration;
-                        break;
-                    }
-                    candidateStartTime = session.getEndTime();
-                }
-                if (candidateEndTime != -1) {
-                    track.getSessions().add(new Session(sessionName, candidateStartTime, candidateStartTime + duration));
-                }
+    private void addSession(String sessionName, int duration, Track track) {
+        if (track.getSessions().isEmpty()) {
+            addSessionIfConferenceIsLongEnoughToContainIt(sessionName, duration, track);
+        } else {
+            TimeSlot candidateTimeSlot = findTimeSlot(duration, track);
+            if (candidateTimeSlot != null) {
+                track.getSessions().add(new Session(sessionName, candidateTimeSlot.getStartTime(), candidateTimeSlot.getStartTime() + duration));
             }
         }
+    }
+
+    private TimeSlot findTimeSlot(int duration, Track track) {
+        List<TimeSlot> emptyTimeSlots = findEmptyTimeSlots(track);
+        return findUsableTimeSlot(duration, emptyTimeSlots);
+    }
+
+    private TimeSlot findUsableTimeSlot(int duration, List<TimeSlot> emptyTimeSlots) {
+        for (TimeSlot emptyTimeSlot : emptyTimeSlots) {
+            if (emptyTimeSlot.isLongerThan(duration)){
+                return new TimeSlot(emptyTimeSlot.getStartTime(), emptyTimeSlot.getStartTime() + duration);
+            }
+        }
+        return null;
+    }
+
+    private List<TimeSlot> findEmptyTimeSlots(Track track) {
+        List<TimeSlot> emptyTimeSlots = new ArrayList<TimeSlot>();
+        int startTime = startTimeInMinutes;
+        for (Session session : track.getSessions()) {
+            emptyTimeSlots.add(new TimeSlot(startTime, session.getStartTime()));
+            startTime = session.getEndTime();
+        }
+        emptyTimeSlots.add(new TimeSlot(startTime, endTimeInMinutes));
+        return emptyTimeSlots;
+    }
+
+    private void addSessionIfConferenceIsLongEnoughToContainIt(String sessionName, int duration, Track track) {
+        if (endTimeInMinutes - startTimeInMinutes > duration) {
+            track.getSessions().add(new Session(sessionName, startTimeInMinutes, startTimeInMinutes + duration));
+        }
+    }
+
+    private Track findTrack(String trackName) {
+        if (!tracks.containsKey(trackName)) {
+            tracks.put(trackName, new Track(new ArrayList<Session>()));
+        }
+        return tracks.get(trackName);
     }
 
 

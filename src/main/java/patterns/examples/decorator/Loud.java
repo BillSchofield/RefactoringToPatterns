@@ -1,4 +1,4 @@
-package decorator_example;
+package patterns.examples.decorator;
 
 // This is what decorators look like
 public class Loud implements Speaker{

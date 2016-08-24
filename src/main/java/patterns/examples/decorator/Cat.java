@@ -1,4 +1,4 @@
-package decorator_example;
+package patterns.examples.decorator;
 
 public class Cat implements Speaker {
     public String speak() {
