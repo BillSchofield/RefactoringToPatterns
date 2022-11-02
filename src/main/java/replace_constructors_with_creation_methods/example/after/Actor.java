@@ -1,6 +1,6 @@
-package replace_constructors_with_creation_methods.after;
+package replace_constructors_with_creation_methods.example.after;
 
-import replace_constructors_with_creation_methods.Weapon;
+import replace_constructors_with_creation_methods.example.Weapon;
 
 import java.util.List;
 
