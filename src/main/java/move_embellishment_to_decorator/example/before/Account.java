@@ -1,4 +1,4 @@
-package move_embellishment_to_decorator.before;
+package move_embellishment_to_decorator.example.before;
 
 public class Account {
 	private double balance = 0.0;

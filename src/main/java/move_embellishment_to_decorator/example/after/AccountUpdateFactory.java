@@ -1,4 +1,4 @@
-package move_embellishment_to_decorator.after;
+package move_embellishment_to_decorator.example.after;
 
 public class AccountUpdateFactory {
 

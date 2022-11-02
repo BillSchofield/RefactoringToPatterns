@@ -1,4 +1,4 @@
-package patterns.examples.decorator;
+package move_embellishment_to_decorator.decorator;
 
 public class Main {
     public static void main(String[] args) {

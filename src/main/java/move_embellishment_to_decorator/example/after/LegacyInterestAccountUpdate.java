@@ -1,6 +1,6 @@
-package move_embellishment_to_decorator.after;
+package move_embellishment_to_decorator.example.after;
 
-import move_embellishment_to_decorator.before.Account;
+import move_embellishment_to_decorator.example.before.Account;
 
 public class LegacyInterestAccountUpdate implements AccountUpdate {
     private final AccountUpdate accountUpdate;
