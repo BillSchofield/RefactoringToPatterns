@@ -1,7 +1,7 @@
-package extract_method.example.original;
+package extract_method_and_class.example.original;
 
-import static extract_method.example.original.Actor.Status.Alive;
-import static extract_method.example.original.Actor.Status.Dead;
+import static extract_method_and_class.example.original.Actor.Status.Alive;
+import static extract_method_and_class.example.original.Actor.Status.Dead;
 import static java.lang.Float.MAX_VALUE;
 
 public class Actor {

@@ -1,4 +1,4 @@
-package extract_method.exercise;
+package extract_method_and_class.exercise;
 
 
 import java.util.Arrays;

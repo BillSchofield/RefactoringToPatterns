@@ -1,4 +1,4 @@
-package extract_method.example.spawn_class;
+package extract_method_and_class.example.extract_class;
 
 public class HitPointChange {
     private final float change;

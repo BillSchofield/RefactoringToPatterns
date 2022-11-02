@@ -1,15 +1,14 @@
-package extract_method.example.extract_methods;
+package extract_method_and_class.example.extract_class;
 
-import static extract_method.example.extract_methods.Actor.Status.Alive;
-import static extract_method.example.extract_methods.Actor.Status.Dead;
-import static java.lang.Float.MAX_VALUE;
+import static extract_method_and_class.example.extract_class.Actor.Status.Alive;
+import static extract_method_and_class.example.extract_class.Actor.Status.Dead;
 
 public class Actor {
     enum Status {Alive, Dead}
     private Status currentStatus;
     private final Float maximumHitPoints;
     private Float currentHitPoints;
-    private Float lastChange;
+    private HitPointChange lastChange;
 
 
     public Actor(Float maximumHitPoints) {
@@ -17,10 +16,11 @@ public class Actor {
         bringToLife();
     }
 
-    public void changeHitPoints(Float hitPointChange){
-        if (isDamage(hitPointChange)){
+    // This is still ugly! What should we do next?
+    public void changeHitPoints(HitPointChange hitPointChange){
+        if (hitPointChange.isDamage()){
             applyDamage(hitPointChange);
-        } else if (isHealing(hitPointChange)){
+        } else if (hitPointChange.isHealing()){
             applyHealing(hitPointChange);
         } else {
             reapplyLastChange();
@@ -32,7 +32,7 @@ public class Actor {
         System.out.println(currentStatus.toString());
     }
 
-    private void rememberLastChange(Float hitPointChange) {
+    private void rememberLastChange(HitPointChange hitPointChange) {
         lastChange = hitPointChange;
     }
 
@@ -40,29 +40,17 @@ public class Actor {
         changeHitPoints(lastChange);
     }
 
-    private void applyHealing(Float hitPointChange) {
-        if (isRaiseDead(hitPointChange)){
+    private void applyHealing(HitPointChange hitPointChange) {
+        if (hitPointChange.isRaiseDead()){
             bringToLifeIfDead();
         }
         updateHitPoints(hitPointChange);
         capHitPointsAtMaximum();
     }
 
-    private boolean isDamage(Float hitPointChange) {
-        return hitPointChange < 0.0f;
-    }
-
-    private boolean isHealing(Float hitPointChange) {
-        return hitPointChange > 0.0f;
-    }
-
-    private void applyDamage(Float hitPointChange) {
+    private void applyDamage(HitPointChange hitPointChange) {
         updateHitPoints(hitPointChange);
         killMonsterIfNoRemainingHitPoints();
-    }
-
-    private boolean isRaiseDead(Float hitPointChange) {
-        return hitPointChange == MAX_VALUE;
     }
 
     private void capHitPointsAtMaximum() {
@@ -89,8 +77,8 @@ public class Actor {
         }
     }
 
-    private void updateHitPoints(Float hitPointChange) {
-        currentHitPoints += hitPointChange;
+    private void updateHitPoints(HitPointChange hitPointChange) {
+        currentHitPoints = hitPointChange.apply(currentHitPoints);
     }
 
 }

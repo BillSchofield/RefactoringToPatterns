@@ -1,8 +1,8 @@
-package extract_method.exercise;
+package extract_method_and_class.exercise;
 
 public class TimeSlot {
-    private int startTime;
-    private int endTime;
+    private final int startTime;
+    private final int endTime;
 
     public TimeSlot(int startTime, int endTime) {
         this.startTime = startTime;

@@ -1,9 +1,7 @@
-package extract_method.exercise;
-
-import java.util.Objects;
+package extract_method_and_class.exercise;
 
 public class Session {
-    private String name;
+    private final String name;
     private final int startTimeInMinutes;
     private final int endTimeInMinutes;
 

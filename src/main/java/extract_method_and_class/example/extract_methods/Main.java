@@ -1,4 +1,5 @@
-package extract_method.example.original;
+package extract_method_and_class.example.extract_methods;
+
 
 public class Main {
     public static void main(String[] args) {
