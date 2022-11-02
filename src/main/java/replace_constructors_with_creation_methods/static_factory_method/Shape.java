@@ -1,4 +1,4 @@
-package patterns.examples.static_factory_method;
+package replace_constructors_with_creation_methods.static_factory_method;
 
 import static java.lang.Math.PI;
 import static java.lang.Math.sqrt;

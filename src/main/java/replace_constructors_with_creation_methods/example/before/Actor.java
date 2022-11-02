@@ -1,7 +1,8 @@
-package replace_constructors_with_creation_methods.before;
+package replace_constructors_with_creation_methods.example.before;
 
-import replace_constructors_with_creation_methods.Weapon;
+import replace_constructors_with_creation_methods.example.Weapon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -13,7 +14,7 @@ public class Actor {
     private final int armor;
     private final int viewRange;
     private final List<Weapon> weapons;
-    private Actor rider;
+    private final Actor rider;
 
 public Actor(boolean canFly, int hitPoints, int armor, Weapon... weapons) {
     this.canFly = canFly;
@@ -29,7 +30,7 @@ public Actor(boolean canFly, int hitPoints, int armor, Actor rider) {
     this.hitPoints = hitPoints;
     this.armor = armor;
     this.viewRange = defaultViewRange;
-    this.weapons = asList();
+    this.weapons = new ArrayList<>();
     this.rider = rider;
 }
 
@@ -38,7 +39,7 @@ public Actor(boolean canFly, int hitPoints, int armor, int viewRange) {
     this.hitPoints = hitPoints;
     this.armor = armor;
     this.viewRange = viewRange;
-    this.weapons = asList();
+    this.weapons = new ArrayList<>();
     this.rider = null;
 }
 }
