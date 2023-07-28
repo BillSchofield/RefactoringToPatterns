@@ -9,6 +9,6 @@ public class Loud implements Speaker{
     }
 
     public String speak() {
-        return speaker.speak() + "!!!";
+        return speaker.speak().toUpperCase();
     }
 }
